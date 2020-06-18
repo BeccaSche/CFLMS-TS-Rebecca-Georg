@@ -65,10 +65,24 @@ var Truck = /** @class */ (function (_super) {
 var motorBike1 = new MotorBike("Fiat", "2002", "bike", "30000", "2", "super");
 var motorBike2 = new MotorBike("Suzuki", "2010", "bike", "50000", "1", "diesel");
 var truck1 = new Truck("Man", "2020", "truck", "1000", "3", "diesel");
-var truck2 = new Truck("Skania", "2020", "truck", "1000", "3", "diesel");
+var truck2 = new Truck("Skania", "2010", "truck", "1000", "3", "diesel");
 for (var i = 0; i < motorBikes.length; i++) {
-    document.getElementById("motorbike").innerHTML += motorBikes[i].showInfo();
+    document.getElementById("motorbike").innerHTML += motorBikes[i].showInfo() + '<button type="button" onclick="motorbikeinfo(' + i + ')">ShowInfo</button><br />';
 }
 for (var i = 0; i < trucks.length; i++) {
-    document.getElementById("truck").innerHTML += trucks[i].showInfo();
+    document.getElementById("truck").innerHTML += trucks[i].showInfo() + '<button type="button" onclick="trucksinfo(' + i + ')">ShowInfo</button><br />';
+}
+function motorbikeinfo(x) {
+    km = motorBikes[x].km;
+    year = motorBikes[x].year;
+    seats = motorBikes[x].seats;
+    y = year * km / 10000 + seats * 1000;
+    document.getElementById("price").innerHTML = 'The price of this motorbike is ' + y;
+}
+function trucksinfo(x) {
+    km = trucks[x].km;
+    year = trucks[x].year;
+    seats = trucks[x].seats;
+    y = year * km / 100 + seats * 1000;
+    document.getElementById("price").innerHTML = 'The price of this truck is ' + y;
 }
